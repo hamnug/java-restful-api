@@ -23,46 +23,112 @@ Response Body (Success) :
 Response Body (Failed) :
 ```json
 {
+    "error" : "Username or Password must not blank"
+}
+``` 
+
+
+## Login User
+
+Endpoint : POST /api/auth/login
+
+Request Body : 
+```json
+{
+    "username" : "hamnug",
+    "password" : "rahasia"
+}
+```
+
+Response Body (Success) : 
+```json
+{
+    "data" : {
+        "token" : "TOKEN",
+        "expiredAt" : 232323232323234 // miliseconds
+    }
+}
+```
+
+Response Body (Failed, 401) :
+```json
+{
     "error" : "Incorrect Username or Password"
 }
 ``` 
 
-## Login User
-
-Endpoint : 
-
-Request Body : 
-
-Response Body (Success) : 
-
-Response Body (Failed) : 
-
-## Update User
-
-Endpoint : 
-
-Request Body : 
-
-Response Body (Success) : 
-
-Response Body (Failed) : 
 
 ## Get User
 
-Endpoint : 
+Endpoint : GET /api/users/current
 
-Request Body : 
+Request Header : 
+
+- X-API-TOKEN : Token (Mandatory)
 
 Response Body (Success) : 
+```json
+{
+    "data" : {
+        "username" : "hamnug",
+        "name" : "Muhammad Ilham Nugraha"
+    }
+}
+```
 
-Response Body (Failed) : 
+Response Body (Failed, 401) :
+```json
+{
+    "error" : "Unauthorized"
+}
+``` 
+
+
+## Update User
+
+Endpoint : PATCH /api/auth/login
+
+Request Header : 
+
+- X-API-TOKEN : Token (Mandatory)
+
+Request Body : 
+```json
+{
+    "name" : "Muhammad Ilham Nugraha", // put if only want to update
+    "password" : "new password" // put if only want to update
+}
+```
+
+Response Body (Success) : 
+```json
+{
+    "data" : {
+        "username" : "hamnug",
+        "name" : "Muhammad Ilham Nugraha"
+    }
+}
+```
+
+Response Body (Failed, 401) :
+```json
+{
+    "error" : "Unauthorized"
+}
+``` 
+
 
 ## Logout User
 
-Endpoint : 
+Endpoint : DELETE api/auth/logout
 
-Request Body : 
+Request Header : 
+
+- X-API-TOKEN : Token (Mandatory)
 
 Response Body (Success) : 
-
-Response Body (Failed) : 
+```json
+{
+    "data" : "OK"
+}
+```
