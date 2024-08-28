@@ -1,4 +1,4 @@
-package hamnugjavaspring_restful_entity;
+package entity;
 
 import java.util.List;
 

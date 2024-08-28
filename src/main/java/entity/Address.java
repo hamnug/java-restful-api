@@ -1,4 +1,4 @@
-package hamnugjavaspring_restful_entity;
+package entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
